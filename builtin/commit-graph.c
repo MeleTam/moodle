@@ -1,3 +1,4 @@
+#define USE_THE_REPOSITORY_VARIABLE
 #include "builtin.h"
 #include "commit.h"
 #include "config.h"
@@ -5,7 +6,6 @@
 #include "gettext.h"
 #include "hex.h"
 #include "parse-options.h"
-#include "repository.h"
 #include "commit-graph.h"
 #include "object-store-ll.h"
 #include "progress.h"
@@ -331,7 +331,10 @@ cleanup:
 	return result;
 }
 
-int cmd_commit_graph(int argc, const char **argv, const char *prefix)
+int cmd_commit_graph(int argc,
+		     const char **argv,
+		     const char *prefix,
+		     struct repository *repo UNUSED)
 {
 	parse_opt_subcommand_fn *fn = NULL;
 	struct option builtin_commit_graph_options[] = {

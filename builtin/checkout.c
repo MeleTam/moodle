@@ -1,3 +1,4 @@
+#define USE_THE_REPOSITORY_VARIABLE
 #include "builtin.h"
 #include "advice.h"
 #include "branch.h"
@@ -1953,7 +1954,10 @@ static int checkout_main(int argc, const char **argv, const char *prefix,
 	return ret;
 }
 
-int cmd_checkout(int argc, const char **argv, const char *prefix)
+int cmd_checkout(int argc,
+		 const char **argv,
+		 const char *prefix,
+		 struct repository *repo UNUSED)
 {
 	struct checkout_opts opts = CHECKOUT_OPTS_INIT;
 	struct option *options;
@@ -2000,7 +2004,10 @@ int cmd_checkout(int argc, const char **argv, const char *prefix)
 			     checkout_usage);
 }
 
-int cmd_switch(int argc, const char **argv, const char *prefix)
+int cmd_switch(int argc,
+	       const char **argv,
+	       const char *prefix,
+	       struct repository *repo UNUSED)
 {
 	struct checkout_opts opts = CHECKOUT_OPTS_INIT;
 	struct option *options = NULL;
@@ -2036,7 +2043,10 @@ int cmd_switch(int argc, const char **argv, const char *prefix)
 			     switch_branch_usage);
 }
 
-int cmd_restore(int argc, const char **argv, const char *prefix)
+int cmd_restore(int argc,
+		const char **argv,
+		const char *prefix,
+		struct repository *repo UNUSED)
 {
 	struct checkout_opts opts = CHECKOUT_OPTS_INIT;
 	struct option *options;
